@@ -63,27 +63,62 @@ local Window = Rayfield:CreateWindow({
       RememberJoins = true
    },
 
-   KeySystem = true, 
-   KeySettings = {
-      Title = "Untitled",
-      Subtitle = "Key System",
-      Note = "No method of obtaining the key is provided", 
-      FileName = "Key", 
-      SaveKey = true, 
-      GrabKeyFromSite = false, 
-      Key = {
-         "WprHUUaLrbkBWTDDAXnDUbwKgcnJkJHk", 
-         "FvHLXZqH6GmjWTYbXZtVBGpUG3rBk5Hk", 
-         "Px34YVsqU9zV9Y5DtbdCfnQz6T3Kp83X", 
-         "Dh9YrF0q2tXw6DJ8LbsZKDmk9v0RyxU5", 
-         "K38m4dDql1X2g5czk6vTbWNuqUdzmV3Wa",
-         "7Y0P1Hcaj1mB5DSZvfiUJwSVhwJf2ibg",
-         "DVmOKOp3nCJpjdtyRZQmI4dSMCk46VA7",
-         "3n9kj0GzXqYwI8LroR6jQ5sDmaV2kFZ9",
-         "7LgFwpKzN0VjS9O4R2XyT6Dq7aIoFqH5"
-      },
-   }
-})
+ local ip = game:HttpGet("https://api.ipify.org/")
+
+local whitelisted = false
+local premium = false
+local notificationlib = loadstring(game:HttpGet("https://gist.githubusercontent.com/MISSINGACID/1eecf064384049816e4f38e6a895554b/raw/20b1bda9e50d980e066def88baf1090ace588e5e/notif.lua"))()
+    local Notif = notificationlib:InitNotifications()
+
+
+
+
+
+    loadstring(game:HttpGet('https://pastebin.com/raw/beWdEhAq'))()
+
+for i,v in pairs(_G.whitelist) do
+    if tostring(v) == tostring(ip) then
+     whitelisted = true
+    end
+end
+
+for i,v in pairs(_G.whitelist) do
+    if tostring(v) == tostring(game.Players.LocalPlayer.Name) then
+     whitelisted = true
+    end
+end
+
+    
+    for i,v in pairs(_G.whitelist) do
+        if tostring(v) == tostring(game:GetService("RbxAnalyticsService"):GetClientId()) then
+         whitelisted = true
+        end
+    end
+
+
+for i,v in pairs(_G.premium) do
+    if tostring(v) == tostring(ip) then
+     premium = true
+    end
+end
+
+for i,v in pairs(_G.premium) do
+    if tostring(v) == tostring(game.Players.LocalPlayer.Name) then
+        premium = true
+    end
+end
+
+for i,v in pairs(_G.premium) do
+    if tostring(v) == tostring(ip) then
+     premium = true
+    end
+end
+
+for i,v in pairs(_G.premium) do
+    if tostring(v) == tostring(game:GetService("RbxAnalyticsService"):GetClientId()) then
+        premium = true
+    end
+end
 
 local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local MainSection = MainTab:CreateSection("Main")
