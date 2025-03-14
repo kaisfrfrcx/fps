@@ -422,3 +422,5 @@ local Button = TeleportsTab:CreateButton({
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-532, 5, -347)
    end,
 })
+
+local Label = TeleportsTab:CreateLabel("Teleported", 4483362458, Color3.fromRGB(255, 0, 0), false) -- Title, Icon, Color, IgnoreTheme
