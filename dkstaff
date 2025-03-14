@@ -57,7 +57,7 @@ local Window = Rayfield:CreateWindow({
       ToggleEnabledOuterStroke = Color3.fromRGB(0, 205, 255), -- Red Outer Stroke When Enabled
       ToggleDisabledOuterStroke = Color3.fromRGB(0, 0, 0), -- Black Outer Stroke When Disabled
 
-      DropdownSelected = Color3.fromRGB(0, 205, 255,) -- Red Selected Dropdown
+      DropdownSelected = Color3.fromRGB(0, 205, 255), -- Red Selected Dropdown
       DropdownUnselected = Color3.fromRGB(0, 0, 0), -- Black Unselected Dropdown
 
       InputBackground = Color3.fromRGB(0, 0, 0), -- Black Input Background
