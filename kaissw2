@@ -317,11 +317,6 @@ else
     warn("HTTP request function not found.")
 end
 
-local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
-local GameSection = GameTab:CreateSection("Player Info")
-
-local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.PlaceId"})
-
 local PlayerTab = Window:CreateTab("Player Abilities", 4483362458) -- Title, Image
 local PlayerSection = PlayerTab:CreateSection("Fly")
 
