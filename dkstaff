@@ -35,7 +35,7 @@ local Window = Rayfield:CreateWindow({
 
       TabBackground = Color3.fromRGB(0, 0, 0), -- Black Tab Background
       TabStroke = Color3.fromRGB(0, 205, 255), -- Red Tab Border
-      TabBackgroundSelected = Color3.fromRGB(0, 205, 255), -- Red Selected Tab
+      TabBackgroundSelected = Color3.fromRGB(255, 0, 0), -- Red Selected Tab
       TabTextColor = Color3.fromRGB(0, 205, 255), -- Red Tab Text
       SelectedTabTextColor = Color3.fromRGB(0, 0, 0), -- Black Text on Selected Tab
 
@@ -321,3 +321,20 @@ local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
 local GameSection = GameTab:CreateSection("Player Info")
 
 local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.PlaceId"})
+
+local PlayerTab = Window:CreateTab("Player Abilities", 4483362458) -- Title, Image
+local PlayerSection = PlayerTab:CreateSection("Fly")
+
+local PlayerButton = Tab:CreateButton({
+   Name = "Button Example",
+   Callback = function()
+              loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+   end,
+})
+
+Rayfield:Notify({
+   Title = "Executed fly",
+   Content = "Ty for executing fly v3",
+   Duration = 6.5,
+   Image = 4483362458,
+})
