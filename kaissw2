@@ -334,3 +334,91 @@ Rayfield:Notify({
    Duration = 6.5,
    Image = 4483362458,
 })
+
+local TeleportsTab = Window:CreateTab("Teleport", 4483362458) -- Title, Image
+local TeleportsSection = TeleportsTab:CreateSection("Tp To People")
+
+local Input = TeleportsTab:CreateInput({
+    Name = "Username",
+    PlaceholderText = "Username",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(v)
+        local found = false
+        local inputName = v:lower()
+
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            if player.Name:lower():sub(1, #inputName) == inputName then
+                playerteleport = player.Name
+                found = true
+                break
+            end
+        end
+
+        if not found then
+            Rayfield:Notify({
+                Title = "Error",
+                Content = 'No player found starting with "' .. v .. '".',
+                Duration = 4,
+                Type = "Error"
+            })
+        end
+    end
+})
+
+
+local Button = TeleportsTab:CreateButton({
+    Name = "Tp To Player",
+    Callback = function()
+        if playerteleport then
+            local player = game.Players:FindFirstChild(playerteleport)
+            if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+            end
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "No player selected to teleport.",
+                Duration = 4,
+                Type = "Error"
+            })
+        end
+    end
+})
+
+
+local TeleportsSection = TeleportsTab:CreateSection("Ingame Teleports")
+
+local Button TeleportsTab:CreateButton({
+   Name = "Apartment 1",
+   Callback = function()
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3, 4, 53)
+   end,
+})
+
+local Button = TeleportsTab:CreateButton({
+   Name = "New ap2",
+   Callback = function()
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(733, 5, 201)
+   end,
+})
+
+local Button = TeleportsTab:CreateButton({
+   Name = "Lil Paki",
+   Callback = function()
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-101, 4, 56)
+   end,
+})
+
+local Button = TeleportsTab:CreateButton({
+   Name = "Car Dealer",
+   Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(792, 5, -7)
+   end,
+})
+
+local Button = TeleportsTab:CreateButton({
+   Name = "Bank",
+   Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-532, 5, -347)
+   end,
+})
