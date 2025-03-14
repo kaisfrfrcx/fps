@@ -2,28 +2,68 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "KAIS | FPS TEST",
-   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "Hold On...",
-   LoadingSubtitle = "By Daddy Kais.",
-   Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+   Name = "KAIS | SW2 | PREMIUM",
+   Icon = nil, -- No icon
+   LoadingTitle = "Loading..",
+   LoadingSubtitle = "by  | Treys_son",
+   Theme = { -- Pure Yellow & Black Theme
+      TextColor = Color3.fromRGB(255, 255, 0), -- Bright Yellow Text
+
+      Background = Color3.fromRGB(0, 0, 0), -- Pure Black Background
+      Topbar = Color3.fromRGB(0, 0, 0), -- Black Topbar
+      Shadow = Color3.fromRGB(0, 0, 0), -- Black Shadow
+
+      NotificationBackground = Color3.fromRGB(0, 0, 0), -- Black Notification Background
+      NotificationActionsBackground = Color3.fromRGB(255, 255, 0), -- Yellow Notification Actions
+
+      TabBackground = Color3.fromRGB(0, 0, 0), -- Black Tab Background
+      TabStroke = Color3.fromRGB(255, 255, 0), -- Yellow Tab Border
+      TabBackgroundSelected = Color3.fromRGB(255, 255, 0), -- Yellow Selected Tab
+      TabTextColor = Color3.fromRGB(255, 255, 0), -- Yellow Tab Text
+      SelectedTabTextColor = Color3.fromRGB(0, 0, 0), -- Black Text on Selected Tab
+
+      ElementBackground = Color3.fromRGB(0, 0, 0), -- Black Element Background
+      ElementBackgroundHover = Color3.fromRGB(0, 0, 0), -- Hover stays Black
+      SecondaryElementBackground = Color3.fromRGB(0, 0, 0), -- Fully Black Secondary Elements
+      ElementStroke = Color3.fromRGB(255, 255, 0), -- Yellow Element Border
+      SecondaryElementStroke = Color3.fromRGB(255, 255, 0), -- Yellow Border on Secondary Element
+
+      SliderBackground = Color3.fromRGB(255, 255, 0), -- Yellow Slider Background
+      SliderProgress = Color3.fromRGB(255, 255, 0), -- Yellow Slider Progress
+      SliderStroke = Color3.fromRGB(255, 255, 0), -- Yellow Slider Stroke
+
+      ToggleBackground = Color3.fromRGB(0, 0, 0), -- Black Toggle Background
+      ToggleEnabled = Color3.fromRGB(255, 255, 0), -- Yellow When Enabled
+      ToggleDisabled = Color3.fromRGB(0, 0, 0), -- Black When Disabled
+      ToggleEnabledStroke = Color3.fromRGB(255, 255, 0), -- Yellow Border When Enabled
+      ToggleDisabledStroke = Color3.fromRGB(0, 0, 0), -- Black Border When Disabled
+      ToggleEnabledOuterStroke = Color3.fromRGB(255, 255, 0), -- Yellow Outer Stroke When Enabled
+      ToggleDisabledOuterStroke = Color3.fromRGB(0, 0, 0), -- Black Outer Stroke When Disabled
+
+      DropdownSelected = Color3.fromRGB(255, 255, 0), -- Yellow Selected Dropdown
+      DropdownUnselected = Color3.fromRGB(0, 0, 0), -- Black Unselected Dropdown
+
+      InputBackground = Color3.fromRGB(0, 0, 0), -- Black Input Background
+      InputStroke = Color3.fromRGB(255, 255, 0), -- Yellow Input Stroke
+      PlaceholderColor = Color3.fromRGB(255, 255, 0) -- Yellow Placeholder Text
+   },
 
    DisableRayfieldPrompts = false,
-   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+   DisableBuildWarnings = false,
 
    ConfigurationSaving = {
-      Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
+      Enabled = False,
+      FolderName = "YellowBlackThemeHub",
+      FileName = "BigHub"
    },
 
    Discord = {
-      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
    },
 
-   KeySystem = false, -- Set this to true to use our key system
+KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
       Title = "Untitled",
       Subtitle = "Key System",
@@ -31,7 +71,7 @@ local Window = Rayfield:CreateWindow({
       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"WprHUUaLrbkBWTDDAXnDUbwKgcnJkJHk", "FvHLXZqH6GmjWTYbXZtVBGpUG3rBk5Hk", "Px34YVsqU9zV9Y5DtbdCfnQz6T3Kp83X", "Dh9YrF0q2tXw6DJ8LbsZKDmk9v0RyxU5", "K38m4dDql1X2g5czk6vTbWNuqUdzmV3Wa","7Y0P1Hcaj1mB5DSZvfiUJwSVhwJf2ibg","DVmOKOp3nCJpjdtyRZQmI4dSMCk46VA7","3n9kj0GzXqYwI8LroR6jQ5sDmaV2kFZ9","7LgFwpKzN0VjS9O4R2XyT6Dq7aIoFqH5"},
    }
 })
 
