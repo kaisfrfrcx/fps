@@ -325,10 +325,10 @@ local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.Pl
 local PlayerTab = Window:CreateTab("Player Abilities", 4483362458) -- Title, Image
 local PlayerSection = PlayerTab:CreateSection("Fly")
 
-local PlayerButton = Tab:CreateButton({
+local PlayerButton = PlayerTab:CreateButton({
    Name = "Button Example",
    Callback = function()
-              loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
    end,
 })
 
