@@ -35,7 +35,7 @@ local Window = Rayfield:CreateWindow({
 
       TabBackground = Color3.fromRGB(0, 0, 0), -- Black Tab Background
       TabStroke = Color3.fromRGB(0, 205, 255), -- Red Tab Border
-      TabBackgroundSelected = Color3.fromRGB(255, 0, 0), -- Red Selected Tab
+      TabBackgroundSelected = Color3.fromRGB(0, 205, 255), -- Red Selected Tab
       TabTextColor = Color3.fromRGB(0, 205, 255), -- Red Tab Text
       SelectedTabTextColor = Color3.fromRGB(0, 0, 0), -- Black Text on Selected Tab
 
