@@ -322,18 +322,12 @@ local PlayerTab = Window:CreateTab("Player Abilities", 4483362458) -- Title, Ima
 local PlayerSection = PlayerTab:CreateSection("Fly")
 
 local PlayerButton = PlayerTab:CreateButton({
-   Name = "Button Example",
+   Name = "Fly V3",
    Callback = function()
              loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
    end,
 })
 
-Rayfield:Notify({
-   Title = "Executed Script",
-   Content = "Ty for buying",
-   Duration = 6.5,
-   Image = 4483362458,
-})
 
 local TeleportsTab = Window:CreateTab("Teleport", 4483362458) -- Title, Image
 local TeleportsSection = TeleportsTab:CreateSection("Tp To People")
@@ -395,12 +389,16 @@ local Button TeleportsTab:CreateButton({
    end,
 })
 
+StatusLabel.Text = "Teleported"
+
 local Button = TeleportsTab:CreateButton({
    Name = "New ap2",
    Callback = function()
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(733, 5, 201)
    end,
 })
+
+StatusLabel.Text = "Teleported"
 
 local Button = TeleportsTab:CreateButton({
    Name = "Lil Paki",
@@ -409,12 +407,16 @@ local Button = TeleportsTab:CreateButton({
    end,
 })
 
+StatusLabel.Text = "Teleported"
+
 local Button = TeleportsTab:CreateButton({
    Name = "Car Dealer",
    Callback = function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(792, 5, -7)
    end,
 })
+
+StatusLabel.Text = "Teleported"
 
 local Button = TeleportsTab:CreateButton({
    Name = "Bank",
@@ -423,4 +425,3 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-532, 5,
    end,
 })
 
-local Label = TeleportsTab:CreateLabel("Teleported", 4483362458, Color3.fromRGB(255, 0, 0), false) -- Title, Icon, Color, IgnoreTheme
