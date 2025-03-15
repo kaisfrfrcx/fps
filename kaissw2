@@ -1,9 +1,9 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua'))()
+Kloadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua'))()
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local whitelist = {
     "Kaisfrms2hub",  
-    "Player",
+    "Bandit_onmission",
     "Player",
     "Player",
     "Player",
