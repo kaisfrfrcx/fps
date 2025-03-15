@@ -1,0 +1,8 @@
+_G.auto = true
+
+
+while _G.auto do 
+game:GetService("ReplicatedStorage").Events.Click4:FireServer()
+
+
+ end
