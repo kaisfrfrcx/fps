@@ -74,17 +74,26 @@ KeySystem = nil, -- Set this to true to use our key system
    }
 })
 
+-- values
+_G.autoTap = true
+
+
+-- Function
+function autoTap()
+    while _G.autoTap == true do
+        game:GetService("ReplicatedStorage").Events.Click4:FireServer()
+    end
+   end
+
 local AutoTab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
 local AutoSection = AutoTab:CreateSection("Section Example")
 
-local Toggle = Tab:CreateToggle({
-   Name = "Toggle Example",
+local AutoToggle = AutoTab:CreateToggle({
+   Name = "Auto Tap",
    CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "Toggle1",
    Callback = function(Value)
-   _G.auto = true
-while _G.auto == true do
-task.wait(0.1)
-game:GetService("ReplicatedStorage").Events.Click4:FireServer()
-   end,
-})
+         _G.autoTap = Value
+         autoTap()
+   end
+}) 
