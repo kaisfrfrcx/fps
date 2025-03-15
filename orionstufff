@@ -1,0 +1,30 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/jensonhirst/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local MainSection = MainTab:AddSection({
+	Name = "Main"
+})
+
+OrionLib:MakeNotification({
+	Name = "THANKYOU FOR BUYING",
+	Content = "TYSMMMM",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+MainTab:AddToggle({
+	Name = "Fly",
+	Default = false,
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))().
+	end    
+})
+
+OrionLib:Init()
