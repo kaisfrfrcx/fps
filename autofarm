@@ -5,48 +5,8 @@ local Window = Rayfield:CreateWindow({
    Icon = nil, -- No icon
    LoadingTitle = "Loading..",
    LoadingSubtitle = "By | Treys_son",
-   Theme = { -- Pure Yellow & Black Theme
-      TextColor = Color3.fromRGB(255, 255, 0), -- Bright Yellow Text
-
-      Background = Color3.fromRGB(0, 0, 0), -- Pure Black Background
-      Topbar = Color3.fromRGB(0, 0, 0), -- Black Topbar
-      Shadow = Color3.fromRGB(0, 0, 0), -- Black Shadow
-
-      NotificationBackground = Color3.fromRGB(0, 0, 0), -- Black Notification Background
-      NotificationActionsBackground = Color3.fromRGB(255, 255, 0), -- Yellow Notification Actions
-
-      TabBackground = Color3.fromRGB(0, 0, 0), -- Black Tab Background
-      TabStroke = Color3.fromRGB(255, 255, 0), -- Yellow Tab Border
-      TabBackgroundSelected = Color3.fromRGB(255, 255, 0), -- Yellow Selected Tab
-      TabTextColor = Color3.fromRGB(255, 255, 0), -- Yellow Tab Text
-      SelectedTabTextColor = Color3.fromRGB(0, 0, 0), -- Black Text on Selected Tab
-
-      ElementBackground = Color3.fromRGB(0, 0, 0), -- Black Element Background
-      ElementBackgroundHover = Color3.fromRGB(0, 0, 0), -- Hover stays Black
-      SecondaryElementBackground = Color3.fromRGB(0, 0, 0), -- Fully Black Secondary Elements
-      ElementStroke = Color3.fromRGB(255, 255, 0), -- Yellow Element Border
-      SecondaryElementStroke = Color3.fromRGB(255, 255, 0), -- Yellow Border on Secondary Element
-
-      SliderBackground = Color3.fromRGB(255, 255, 0), -- Yellow Slider Background
-      SliderProgress = Color3.fromRGB(255, 255, 0), -- Yellow Slider Progress
-      SliderStroke = Color3.fromRGB(255, 255, 0), -- Yellow Slider Stroke
-
-      ToggleBackground = Color3.fromRGB(0, 0, 0), -- Black Toggle Background
-      ToggleEnabled = Color3.fromRGB(255, 255, 0), -- Yellow When Enabled
-      ToggleDisabled = Color3.fromRGB(0, 0, 0), -- Black When Disabled
-      ToggleEnabledStroke = Color3.fromRGB(255, 255, 0), -- Yellow Border When Enabled
-      ToggleDisabledStroke = Color3.fromRGB(0, 0, 0), -- Black Border When Disabled
-      ToggleEnabledOuterStroke = Color3.fromRGB(255, 255, 0), -- Yellow Outer Stroke When Enabled
-      ToggleDisabledOuterStroke = Color3.fromRGB(0, 0, 0), -- Black Outer Stroke When Disabled
-
-      DropdownSelected = Color3.fromRGB(255, 255, 0), -- Yellow Selected Dropdown
-      DropdownUnselected = Color3.fromRGB(0, 0, 0), -- Black Unselected Dropdown
-
-      InputBackground = Color3.fromRGB(0, 0, 0), -- Black Input Background
-      InputStroke = Color3.fromRGB(255, 255, 0), -- Yellow Input Stroke
-      PlaceholderColor = Color3.fromRGB(255, 255, 0) -- Yellow Placeholder Text
-   },
-
+   Theme = "light",
+      
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false,
 
