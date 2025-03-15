@@ -389,16 +389,12 @@ local Button TeleportsTab:CreateButton({
    end,
 })
 
-StatusLabel.Text = "Teleported"
-
 local Button = TeleportsTab:CreateButton({
    Name = "New ap2",
    Callback = function()
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(733, 5, 201)
    end,
 })
-
-StatusLabel.Text = "Teleported"
 
 local Button = TeleportsTab:CreateButton({
    Name = "Lil Paki",
@@ -407,7 +403,6 @@ local Button = TeleportsTab:CreateButton({
    end,
 })
 
-StatusLabel.Text = "Teleported"
 
 local Button = TeleportsTab:CreateButton({
    Name = "Car Dealer",
@@ -416,7 +411,6 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(792, 5, 
    end,
 })
 
-StatusLabel.Text = "Teleported"
 
 local Button = TeleportsTab:CreateButton({
    Name = "Bank",
