@@ -332,7 +332,7 @@ end)
 local GUNSTab = Window:CreateTab("GUNS",nil) -- Title, Image
 local Section = GUNSTab:CreateSection("GUNS")
 
-local Button = GUNSTab:CreateButton({
+	local Button = GUNSTab:CreateButton({
    Name = "DUPEGUNS",
    Callback = function()
         -- Script for duplicating an item in a player's inventory
@@ -437,3 +437,15 @@ local Slider = mainTab:CreateSlider({
       game.Players.LocalPlayer.Character.Jumppower = (Value)
    end,
 })
+
+
+local TpTab = Window:CreateTab("Tp",nil) -- Title, Image
+local TpSection = TpTab:CreateSection("Tp")
+
+local TpButton = TpTab:CreateButton({
+   Name = "idek",
+   Callback = function()
+           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-248, 283, -523)
+   end,
+})
+
