@@ -1,70 +1,40 @@
-local Atlas = loadstring(game:HttpGet("https://rd2glory.com/Atlas.lua"))()
+local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/cueshut/saves/main/criminality%20paste%20ui%20library'))()
 
-local test = Atlas.new({
-    Name = "Script";
-    ConfigFolder = "AtlasScript";
-    Credit = "Made by me!";
-    Color = Color3.fromRGB(164, 53, 90);
-    FullName = "Example Script";
-    UseLoader = true;
-    Bind = "LeftControl";
-    CheckKey = function(e) -- this can be nil to disable key checking
-        return e == "password"
-    end;
-    Discord = "https://discord.gg/yxXX7bxp"
-})
+-- // Window \\ --
+local window = library.new('leadmarker is so hot', 'leadmarker')
 
-local p1 = test:CreatePage("Apples")
-local p2 = test:CreatePage("Oranges")
+-- // Tabs \\ --
+local tab = window.new_tab('rbxassetid://4483345998')
+local tab1 = window.new_tab('rbxassetid://4483345998')
 
-local s1 = p1:CreateSection("Category 1")
-local s2 = p1:CreateSection("Category 2")
-local s3 = p2:CreateSection("Section 1")
-local s4 = p2:CreateSection("Section 2")
+-- // Sections \\ --
+local section = tab.new_section('Bruh XD')
+local section1 = tab.new_section(':DDD HI')
 
-s1:CreateToggle({ -- IMPORTANT: This function does not return anything, please modify flags directly in order to read or update toggle values. SCROLL TO BOTTOM OF PAGE TO SEE HOW TO MODIFY FLAGS
-    Name = "Toggle"; -- required: name of element
-    Flag = "MyToggle"; -- required: unique flag name to use
-    Default = true; -- optional: default value for toggle, will be used if config saving is disabled and there is no saved data, will be false if left nil
-    Callback = function(newValue) -- optional: function that will be called when toggled, it is reccomended to modify flags directly
-        print("Toggle:",newValue)
-    end;
-    -- Scroll to the bottom of the page to read more about the following two:
-    Warning = "This has a warning"; -- optional: this argument is used in all elements (except for Body) and will indicate text that will appear when the player hovers over the warning icon
-    WarningIcon = 12345; -- optional: ImageAssetId for warning icon, will only be used if Warning is not nil, default is yellow warning icon.
-})
+-- // Sector \\ --
+local sector = section.new_sector('OK', 'Left')
+local sector1 = section.new_sector('BRUHHHH', 'Right')
 
-s2:CreateSliderToggle({ -- IMPORTANT: This function does not return anything, please modify flags directly in order to read or update toggle values. SCROLL TO BOTTOM OF PAGE TO SEE HOW TO MODIFY FLAGS
-    Name = "Slider"; -- required: name of element
-    SliderFlag = "Slider"; -- required: unique flag name to use for slider element
-    ToggleFlag = "Toggle"; -- required: unique flag name to use for toggle element
-    Min = 0; -- required: slider minimum drag
-    Max = 10; -- required: slider maximum drag (Max>Min or else script will error)
-    AllowOutOfRange = true; -- optional: determines whether the player can enter values outside of range Min:Max when typing in the TextBox. If left nil, this is false
-    Digits = 2; -- optional: digits for rounding when dragging or entering values, default is 0 (whole numbers)
-    SliderDefault = 5; -- optional: default value for slider, will be used if config saving is disabled and there is no saved data, will be the Min value if left nil
-    ToggleDefault = false; -- optional: default value for toggle, will be used if config saving is disabled and there is no saved data, will be false if left nil
-    SliderCallback = function(newValue) -- optional: function that will be called whenever slider flag is changed
-        print("Slider:",newValue)
-    end;
-    ToggleCallback = function(newValue) -- optional: function that will be called whenever toggle flag is changed
-        print("Toggle:",newValue)
-    end;
-    SavingDisabled = true; -- this is how you would disable saving on a single element, just add this argument in
-    -- Scroll to the bottom of the page to read more about the following two:
-    Warning = "This has a warning"; -- optional: this argument is used in all elements (except for Paragraph) and will indicate text that will appear when the player hovers over the warning icon
-    WarningIcon = 12345; -- optional: ImageAssetId for warning icon, will only be used if Warning is not nil, default is yellow warning icon.
-})
+-- // Elements \\ -- (Type, Name, State, Callback)
+local button = sector.element('Button', 'Button', nil, function()
 
-local MyParagraph = s3:CreateParagraph("Hello world!") -- creates a paragraph element with "Hello world!" as the text content
+end)
 
-s4:CreateButton({
-    Name = "My Button"; -- required: name of element
-    Callback = function() -- required: function to be called when button is pressed
-        test:Notify({
-            Title = "My Notif";
-            Content = "Hello there."
-        })
-        print("Button pressed!")
-    end
-})
+local toggle = sector.element('Toggle', 'Toggle', false, function(v)
+   print(v.Toggle) -- 🤓
+end)
+toggle:add_color({Color = Color3.fromRGB(84, 101, 255)}, nil, function(v)
+   print(v.Color)    
+end)
+
+local dropdown = sector.element('Dropdown', 'Dropdown', {options = {'one', 'two', 'three'}}, function(v)
+   print(v.Dropdown)
+end)
+
+local slider = sector.element('Slider', 'Slider', {default = {min = 1, max = 100, default = 50}}, function(v)
+   print(v.Slider)
+end)
+
+local combo = sector.element('Combo', 'Combo', {options = {'bruh', 'otherbruh'}}, function(v)
+   table.foreach(v.Combo, print)
+end)
