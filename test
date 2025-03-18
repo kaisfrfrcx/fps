@@ -37,6 +37,12 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Card Farm", 4483362458) -- Title, Image
 local MainSection = MainTab:CreateSection("Amount")
 
-
-updateCharacterGui("Name", v.Text)
-end
+MainTab:CreateInput({
+    Name = "Laptop & Card Dupe",
+    PlaceholderText = "Amount",
+    RemoveTextAfterFocusLost = false,
+    Flag = "DupeAmount",
+    Callback = function(value)
+        updateCharacterGui("Name", v.Text)
+    end
+})
