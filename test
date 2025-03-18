@@ -1,0 +1,2 @@
+updateCharacterGui("Name", v.Text)
+end
