@@ -4,14 +4,13 @@ local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/cuesh
 local window = library.new('KAIS SW2', 'leadmarker')
 
 -- // Tabs \\ --
-local tab = window.new_tab('rbxassetid://4483345998')
+local testtab = window.new_tab('rbxassetid://4483345998')
 
 -- // Sections \\ --
-local section = tab.new_section('test')
+local testsection = tab.new_section('test')
 
 
 -- // Elements \\ -- (Type, Name, State, Callback)
-local button = sector.element('Button', 'Fly', false, function(v)
+local button = test.section.element('Button', 'Fly', false, function(v)
         loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
-
-     end)
+        end)
