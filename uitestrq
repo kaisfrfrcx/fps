@@ -1,0 +1,70 @@
+local Atlas = loadstring(game:HttpGet("https://rd2glory.com/Atlas.lua"))()
+
+local test = Atlas.new({
+    Name = "Script";
+    ConfigFolder = "AtlasScript";
+    Credit = "Made by me!";
+    Color = Color3.fromRGB(164, 53, 90);
+    FullName = "Example Script";
+    UseLoader = true;
+    Bind = "LeftControl";
+    CheckKey = function(e) -- this can be nil to disable key checking
+        return e == "password"
+    end;
+    Discord = "https://discord.gg/yxXX7bxp"
+})
+
+local p1 = test:CreatePage("Apples")
+local p2 = test:CreatePage("Oranges")
+
+local s1 = p1:CreateSection("Category 1")
+local s2 = p1:CreateSection("Category 2")
+local s3 = p2:CreateSection("Section 1")
+local s4 = p2:CreateSection("Section 2")
+
+s1:CreateToggle({ -- IMPORTANT: This function does not return anything, please modify flags directly in order to read or update toggle values. SCROLL TO BOTTOM OF PAGE TO SEE HOW TO MODIFY FLAGS
+    Name = "Toggle"; -- required: name of element
+    Flag = "MyToggle"; -- required: unique flag name to use
+    Default = true; -- optional: default value for toggle, will be used if config saving is disabled and there is no saved data, will be false if left nil
+    Callback = function(newValue) -- optional: function that will be called when toggled, it is reccomended to modify flags directly
+        print("Toggle:",newValue)
+    end;
+    -- Scroll to the bottom of the page to read more about the following two:
+    Warning = "This has a warning"; -- optional: this argument is used in all elements (except for Body) and will indicate text that will appear when the player hovers over the warning icon
+    WarningIcon = 12345; -- optional: ImageAssetId for warning icon, will only be used if Warning is not nil, default is yellow warning icon.
+})
+
+s2:CreateSliderToggle({ -- IMPORTANT: This function does not return anything, please modify flags directly in order to read or update toggle values. SCROLL TO BOTTOM OF PAGE TO SEE HOW TO MODIFY FLAGS
+    Name = "Slider"; -- required: name of element
+    SliderFlag = "Slider"; -- required: unique flag name to use for slider element
+    ToggleFlag = "Toggle"; -- required: unique flag name to use for toggle element
+    Min = 0; -- required: slider minimum drag
+    Max = 10; -- required: slider maximum drag (Max>Min or else script will error)
+    AllowOutOfRange = true; -- optional: determines whether the player can enter values outside of range Min:Max when typing in the TextBox. If left nil, this is false
+    Digits = 2; -- optional: digits for rounding when dragging or entering values, default is 0 (whole numbers)
+    SliderDefault = 5; -- optional: default value for slider, will be used if config saving is disabled and there is no saved data, will be the Min value if left nil
+    ToggleDefault = false; -- optional: default value for toggle, will be used if config saving is disabled and there is no saved data, will be false if left nil
+    SliderCallback = function(newValue) -- optional: function that will be called whenever slider flag is changed
+        print("Slider:",newValue)
+    end;
+    ToggleCallback = function(newValue) -- optional: function that will be called whenever toggle flag is changed
+        print("Toggle:",newValue)
+    end;
+    SavingDisabled = true; -- this is how you would disable saving on a single element, just add this argument in
+    -- Scroll to the bottom of the page to read more about the following two:
+    Warning = "This has a warning"; -- optional: this argument is used in all elements (except for Paragraph) and will indicate text that will appear when the player hovers over the warning icon
+    WarningIcon = 12345; -- optional: ImageAssetId for warning icon, will only be used if Warning is not nil, default is yellow warning icon.
+})
+
+local MyParagraph = s3:CreateParagraph("Hello world!") -- creates a paragraph element with "Hello world!" as the text content
+
+s4:CreateButton({
+    Name = "My Button"; -- required: name of element
+    Callback = function() -- required: function to be called when button is pressed
+        test:Notify({
+            Title = "My Notif";
+            Content = "Hello there."
+        })
+        print("Button pressed!")
+    end
+})
