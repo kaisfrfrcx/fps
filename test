@@ -44,16 +44,15 @@ local MainInput = MainTab:CreateInput({
    PlaceholderText = "Input Placeholder",
    RemoveTextAfterFocusLost = false,
    Flag = "Input1",
-   Callback = function(v)
-   lastplayername = v.Text
+   Callback = function(value)
+   lastplayername = value.Text
     updateCharacterGui("Name", v.Text)
-   
    end
 })
 
 local MainButton = MainTab:CreateButton({
    Name = "Apply",
-   Callback = function(v)
+   Callback = function(value)
        if lastplayername ~= nil then
     updateCharacterGui("Name", lastplayername)
     end
