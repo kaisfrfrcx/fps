@@ -80,21 +80,20 @@ local MainSection = MainTab:CreateSection("Amount")
 
 local MainInput = MainTab:CreateInput({
    Name = "Input Example",
-   CurrentValue = "",
+   CurrentValue = "function = (value)",
    PlaceholderText = "Input Placeholder",
    RemoveTextAfterFocusLost = false,
    Flag = "Input1",
    Callback = function(value)
-   lastplayername = value.Text
-    updateCharacterGui("Name", value.Text)
+              lastplayername = value.Text
+              updateCharacterGui("Name", value.Text)
    end
 })
 
 local MainButton = MainTab:CreateButton({
    Name = "Apply",
    Callback = function(value)
-       if lastplayername ~= nil then
-    updateCharacterGui("Name", lastplayername)
-    end
+              if lastplayername ~= nil then
+              updateCharacterGui("Name", lastplayername)
    end,
 })
