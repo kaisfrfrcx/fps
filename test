@@ -51,8 +51,9 @@ MainTab:CreateInput({
 
 local MainButton = MainTab:CreateButton({
    Name = "apply",
-   Callback = function()
-     if lastplayername ~= nil then
-    updateCharacterGui("Name", lastplayername)
-   end,
+   Callback = function(value)
+             if lastplayername = nil then
+              updateCharacterGui("Name", lastplayername)
+   
+  end
 })
