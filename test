@@ -39,8 +39,8 @@ local MainTab = Window:CreateTab("Card Farm", 4483362458) -- Title, Image
 local MainSection = MainTab:CreateSection("Amount")
 
 MainTab:CreateInput({
-    Name = "Laptop & Card Dupe",
-    PlaceholderText = "Amount",
+    Name = "Enter name",
+    PlaceholderText = "name",
     RemoveTextAfterFocusLost = false,
     Flag = "DupeAmount",
     Callback = function(value)
