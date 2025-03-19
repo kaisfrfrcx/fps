@@ -44,6 +44,15 @@ MainTab:CreateInput({
     RemoveTextAfterFocusLost = false,
     Flag = "DupeAmount",
     Callback = function(value)
-        updateCharacterGui("Name", v.Text)
+       lastplayername = value.Text
+    updateCharacterGui("Name", value.Text)
     end
+})
+
+local MainButton = MainTab:CreateButton({
+   Name = "apply",
+   Callback = function()
+     if lastplayername ~= nil then
+    updateCharacterGui("Name", lastplayername)
+   end,
 })
