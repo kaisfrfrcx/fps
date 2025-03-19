@@ -38,3 +38,24 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Card Farm", 4483362458) -- Title, Image
 local MainSection = MainTab:CreateSection("Amount")
 
+local MainInput = MainTab:CreateInput({
+   Name = "Input Example",
+   CurrentValue = "",
+   PlaceholderText = "Input Placeholder",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(v)
+   lastplayername = v.Text
+    updateCharacterGui("Name", v.Text)
+   
+   end
+})
+
+local MainButton = MainTab:CreateButton({
+   Name = "Apply",
+   Callback = function(v)
+       if lastplayername ~= nil then
+    updateCharacterGui("Name", lastplayername)
+    end
+   end,
+})
