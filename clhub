@@ -27,10 +27,10 @@ local function isWhitelisted(player)
 end
 
 local Window = Rayfield:CreateWindow({
-   Name = "CLHUB | SW2",
+   Name = "KAIS HUB | V1 | SW2",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "Loading...",
-   LoadingSubtitle = "By Clhub Owner",
+   LoadingSubtitle = "By Kaishub",
    Theme = { 
       TextColor = Color3.fromRGB(0, 205, 255), -- Red Text
 
