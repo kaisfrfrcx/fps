@@ -529,22 +529,3 @@ local GameTab = Window:CreateTab("Game", 4483362458) -- Title, Image
 local GameSection = GameTab:CreateSection("Player Info")
 
 local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.PlaceId"})
-
-
-local MainSection = MainTab:CreateSection("AutoFarms")
-
-local Button = Tab:CreateButton({
-   Name = "Mop",
-   Callback = function()
-      while _G.automopfarm do
-for i,v in pairs(game.Workspace.CleanPart:GetChildren()) do
-    if v.ProximityPrompt.Enabled == true then
-    game:GetService("ReplicatedStorage").GiveMop:FireServer()
-    v.ProximityPrompt.HoldDuration = 1
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 2, 0)
-    wait(0.1)
-    fireproximityprompt(v.ProximityPrompt, v.ProximityPrompt.HoldDuration, false)
-        wait(v.ProximityPrompt.HoldDuration + 0.2 + 2)
-   end,
-})
-
