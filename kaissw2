@@ -419,3 +419,10 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-532, 5,
    end,
 })
 
+-- Button for clipboard
+local Button = MainTab:CreateButton({
+  Name = "Copy Dc server",
+  Callback = function()
+     Set-Clipboard -Value "https://discord.gg/NRHf73jq"
+   end, 
+})
