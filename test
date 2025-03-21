@@ -187,7 +187,7 @@ MainTab:CreateButton({
 local player = game.Players.LocalPlayer
 
 
-if player.Name ~= "Kaisfrms2hub" then
+if player.Name ~= "ExactUsernameHere" then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Access Denied",
         Text = "You are not whitelisted!",
