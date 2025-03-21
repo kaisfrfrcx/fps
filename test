@@ -200,3 +200,10 @@ end
 
 
 print("Whitelisted - Loading UI...")
+
+-- Button for clipboard
+MainTab:CreateButton({
+  Name = "Copy Dc server",
+  Callback = Function()
+     Set-Clipboard -Value "https://discord.gg/NRHf73jq"
+end })
