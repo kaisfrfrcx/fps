@@ -423,6 +423,9 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-532, 5,
 local Button = MainTab:CreateButton({
   Name = "Copy Dc server",
   Callback = function()
-     Set-Clipboard -Value "https://discord.gg/NRHf73jq"
+     function love.load()
+    love.system.setClipboard("https://discord.com/invite/NRHf73jq")
+    print("Text has been copied to the clipboard!")
+end
    end, 
 })
