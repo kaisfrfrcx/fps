@@ -533,7 +533,10 @@ local Paragraph = GameTab:CreateParagraph({Title = "Game Id", Content = "game.Pl
 
 local MainSection = MainTab:CreateSection("AutoFarms")
 
-while _G.automopfarm do
+local Button = Tab:CreateButton({
+   Name = "Mop",
+   Callback = function()
+      while _G.automopfarm do
 for i,v in pairs(game.Workspace.CleanPart:GetChildren()) do
     if v.ProximityPrompt.Enabled == true then
     game:GetService("ReplicatedStorage").GiveMop:FireServer()
@@ -542,3 +545,6 @@ for i,v in pairs(game.Workspace.CleanPart:GetChildren()) do
     wait(0.1)
     fireproximityprompt(v.ProximityPrompt, v.ProximityPrompt.HoldDuration, false)
         wait(v.ProximityPrompt.HoldDuration + 0.2 + 2)
+   end,
+})
+
