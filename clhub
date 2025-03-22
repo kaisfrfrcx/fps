@@ -19,7 +19,7 @@ local player = game.Players.LocalPlayer
 
 local whitelistedPlayers = {
     "pb_tom3",
-    "radarfrmsu",
+    "kaisfrms2hub",
     "bandit_onmission",
 }
 
