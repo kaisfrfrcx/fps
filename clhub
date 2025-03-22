@@ -1,3 +1,20 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local function checkExecuter()
+    local executer = identifyexecutor()
+    if executer == "Solara" or executer == "JJSploit" or executer == "Xeno" or executer == "Zorara" or executer == "Ronix" or executer == "NX" or executer == "Solar" then
+        return true 
+    end
+    return false
+end
+
+if checkExecuter() then
+    game.Players.LocalPlayer:Kick("Your executer does not support this script due to anti cheat. You must have an executer with 100 UNC.")
+    return
+else
+loadstring(game:HttpGet("https://raw.githubusercontent.com/s2shubowner/Bypasser/main/bypass"))()
+end
+
 local player = game.Players.LocalPlayer
 
 local whitelistedPlayers = {
@@ -25,9 +42,6 @@ if not isWhitelisted then
 end
 
 print("Whitelisted - Loading UI...")
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/s2shubowner/Bypasser/main/bypass"))()
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- Create UI Window
 local Window = Rayfield:CreateWindow({
@@ -1155,108 +1169,89 @@ local TeleportButton = TeleportsTab:CreateButton({
     end
 })
 
-local TeleportsSection = TeleportsTab:CreateSection("Teleports Player")
+local TeleportsSection = TeleportsTab:CreateSection("Main Teleports")
 
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+local player = game.Players.LocalPlayer
 
-local playerteleport = nil
-local playerList = {}
-
-local PlayerDropdown = TeleportsTab:CreateDropdown({
-    Name = "Select Player",
-    Options = playerList,
-    Callback = function(selected)
-        playerteleport = selected
+local function getPlayerNames()
+    local playerList = {}
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= player then
+            table.insert(playerList, v.Name)
+        end
     end
-})
-
-local function updatePlayerList()
-    playerList = {}
-    for _, player in ipairs(Players:GetPlayers()) do
-        table.insert(playerList, player.Name)
-    end
-    PlayerDropdown:UpdateOptions(playerList)
+    return playerList
 end
 
--- Connect PlayerAdded and PlayerRemoving events to update the list
-Players.PlayerAdded:Connect(function()
-    updatePlayerList()
-end)
+local selectedPlayer = nil
+local Dropdown = TeleportsTab:CreateDropdown({
+    Name = "Select a Player",
+    Options = getPlayerNames(),
+    Callback = function(Value)
+        selectedPlayer = Value
+    end,
+})
 
-Players.PlayerRemoving:Connect(function()
-    updatePlayerList()
-end)
+TeleportsTab:CreateButton({
+    Name = "Refresh Player List",
+    Callback = function()
+        Dropdown:Refresh(getPlayerNames(), true)
+    end,
+})
 
--- Create teleport button
-local Button = TeleportsTab:CreateButton({
+TeleportsTab:CreateButton({
     Name = "Teleport to Player",
     Callback = function()
-        if playerteleport then
-            local player = Players:FindFirstChild(playerteleport)
-            if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+        if selectedPlayer then
+            local targetPlayer = game.Players:FindFirstChild(selectedPlayer)
+            if targetPlayer then
+                local targetCharacter = targetPlayer.Character
+                if targetCharacter then
+                    local targetHRP = targetCharacter:FindFirstChild("HumanoidRootPart")
+                    if targetHRP then
+                        local targetPosition = targetHRP.CFrame
+
+                        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                            player.Character:PivotTo(targetPosition) -- Using PivotTo instead of CFrame
+                            Rayfield:Notify({
+                                Title = "Success",
+                                Content = "Teleported to " .. selectedPlayer,
+                                Duration = 2,
+                            })
+                        else
+                            Rayfield:Notify({
+                                Title = "Error",
+                                Content = "Your character is not loaded.",
+                                Duration = 2,
+                            })
+                        end
+                    else
+                        Rayfield:Notify({
+                            Title = "Error",
+                            Content = "Target player's HumanoidRootPart not found.",
+                            Duration = 2,
+                        })
+                    end
+                else
+                    Rayfield:Notify({
+                        Title = "Error",
+                        Content = "Target player's character not found.",
+                        Duration = 2,
+                    })
+                end
             else
                 Rayfield:Notify({
                     Title = "Error",
-                    Content = "Player not found or not loaded.",
-                    Duration = 4,
-                    Type = "Error"
+                    Content = "Player not found or left the game.",
+                    Duration = 2,
                 })
             end
         else
             Rayfield:Notify({
                 Title = "Error",
-                Content = "No player selected to teleport.",
-                Duration = 4,
-                Type = "Error"
+                Content = "No player selected!",
+                Duration = 2,
             })
         end
-    end
-})
-
--- Call updatePlayerList initially to populate the dropdown when the script starts
-updatePlayerList()
-
-local MoneyTab = Window:CreateTab("Money", 4483362458) -- Title, Image ID
-local MoneySection = MoneyTab:CreateSection("Pay Players")
-
-local Button = MoneyTab:CreateButton({
-   Name = "Pay 100k",
-   Callback = function()
-        local ChatService = game:GetService("Chat")
-
-     
-ChatService:Chat(game.Players.LocalPlayer.Character.Head, "/pay 100000", Enum.ChatColor.Blue)  
-   end,
-})
-
-local Button = MoneyTab:CreateButton({
-   Name = "Pay 400k",
-   Callback = function()
-        local ChatService = game:GetService("Chat")
-
-     
-ChatService:Chat(game.Players.LocalPlayer.Character.Head, "/pay 400000", Enum.ChatColor.Blue)  
-   end,
-})
-
-local Button = MoneyTab:CreateButton({
-   Name = "Pay 800k",
-   Callback = function()
-        local ChatService = game:GetService("Chat")
-
-     
-ChatService:Chat(game.Players.LocalPlayer.Character.Head, "/pay 800k", Enum.ChatColor.Blue)  
-   end,
-})
-
-local Button = MoneyTab:CreateButton({
-   Name = "Drop Cash",
-   Callback = function()
-        local ChatService = game:GetService("Chat")
-
-     
-ChatService:Chat(game.Players.LocalPlayer.Character.Head, "/drop", Enum.ChatColor.Blue)  
-   end,
+    end,
 })
