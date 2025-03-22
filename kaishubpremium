@@ -1,0 +1,387 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local function checkExecuter()
+    local executer = identifyexecutor()
+    if executer == "Solara" or executer == "JJSploit" or executer == "Xeno" or executer == "Zorara" or executer == "Ronix" or executer == "NX" or executer == "Solar" then
+        return true 
+    end
+    return false
+end
+
+if checkExecuter() then
+    game.Players.LocalPlayer:Kick("Your executer does not support this script due to anti cheat. You must have an executer with 100 UNC.")
+    return
+else
+loadstring(game:HttpGet("https://raw.githubusercontent.com/s2shubowner/Bypasser/main/bypass"))()
+end
+
+local player = game.Players.LocalPlayer
+
+local whitelistedPlayers = {
+    "kaisfrms2hub",
+    "Player",
+    "Player",
+}
+
+local isWhitelisted = false
+for _, whitelistedName in pairs(whitelistedPlayers) do
+    if player.Name == whitelistedName then
+        isWhitelisted = true
+        break
+    end
+end
+
+-- If the player is not whitelisted, send a notification and stop the script
+if not isWhitelisted then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Access Denied!!",
+        Text = "You are not whitelisted!",
+        Duration = 3
+    })
+    return -- Prevent further code execution
+end
+
+print("Whitelisted - Loading UI...")
+
+local Window = Rayfield:CreateWindow({
+   Name = "KAISHUB | V1 | PREMIUM",
+   Icon = nil, -- No icon
+   LoadingTitle = "Loading..",
+   LoadingSubtitle = "By | Treys_son",
+   Theme = { -- Pure Yellow & Black Theme
+      TextColor = Color3.fromRGB(255, 255, 0), -- Bright Yellow Text
+
+      Background = Color3.fromRGB(0, 0, 0), -- Pure Black Background
+      Topbar = Color3.fromRGB(0, 0, 0), -- Black Topbar
+      Shadow = Color3.fromRGB(0, 0, 0), -- Black Shadow
+
+      NotificationBackground = Color3.fromRGB(0, 0, 0), -- Black Notification Background
+      NotificationActionsBackground = Color3.fromRGB(255, 255, 0), -- Yellow Notification Actions
+
+      TabBackground = Color3.fromRGB(0, 0, 0), -- Black Tab Background
+      TabStroke = Color3.fromRGB(255, 255, 0), -- Yellow Tab Border
+      TabBackgroundSelected = Color3.fromRGB(255, 255, 0), -- Yellow Selected Tab
+      TabTextColor = Color3.fromRGB(255, 255, 0), -- Yellow Tab Text
+      SelectedTabTextColor = Color3.fromRGB(0, 0, 0), -- Black Text on Selected Tab
+
+      ElementBackground = Color3.fromRGB(0, 0, 0), -- Black Element Background
+      ElementBackgroundHover = Color3.fromRGB(0, 0, 0), -- Hover stays Black
+      SecondaryElementBackground = Color3.fromRGB(0, 0, 0), -- Fully Black Secondary Elements
+      ElementStroke = Color3.fromRGB(255, 255, 0), -- Yellow Element Border
+      SecondaryElementStroke = Color3.fromRGB(255, 255, 0), -- Yellow Border on Secondary Element
+
+      SliderBackground = Color3.fromRGB(255, 255, 0), -- Yellow Slider Background
+      SliderProgress = Color3.fromRGB(255, 255, 0), -- Yellow Slider Progress
+      SliderStroke = Color3.fromRGB(255, 255, 0), -- Yellow Slider Stroke
+
+      ToggleBackground = Color3.fromRGB(0, 0, 0), -- Black Toggle Background
+      ToggleEnabled = Color3.fromRGB(255, 255, 0), -- Yellow When Enabled
+      ToggleDisabled = Color3.fromRGB(0, 0, 0), -- Black When Disabled
+      ToggleEnabledStroke = Color3.fromRGB(255, 255, 0), -- Yellow Border When Enabled
+      ToggleDisabledStroke = Color3.fromRGB(0, 0, 0), -- Black Border When Disabled
+      ToggleEnabledOuterStroke = Color3.fromRGB(255, 255, 0), -- Yellow Outer Stroke When Enabled
+      ToggleDisabledOuterStroke = Color3.fromRGB(0, 0, 0), -- Black Outer Stroke When Disabled
+
+      DropdownSelected = Color3.fromRGB(255, 255, 0), -- Yellow Selected Dropdown
+      DropdownUnselected = Color3.fromRGB(0, 0, 0), -- Black Unselected Dropdown
+
+      InputBackground = Color3.fromRGB(0, 0, 0), -- Black Input Background
+      InputStroke = Color3.fromRGB(255, 255, 0), -- Yellow Input Stroke
+      PlaceholderColor = Color3.fromRGB(255, 255, 0) -- Yellow Placeholder Text
+   },
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = False,
+      FolderName = "YellowBlackThemeHub",
+      FileName = "BigHub"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+KeySystem = nil, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {},
+   }
+})
+
+local MainTab = Window:CreateTab("Money", 4483362458) -- Title, Image
+local MainSection = MainTab:CreateSection("Card Farm")
+
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local player = Players.LocalPlayer
+
+local dupeAmount = 10
+local StatusLabel = MainTab:CreateLabel("Status: Waiting for action...")
+
+-- Notification function with error handling
+local function notify(message, time, type)
+    local success, err = pcall(function()
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = type or "Info",
+            Text = message,
+            Duration = time or 5,
+        })
+    end)
+
+    if not success then
+        warn("Notification failed: " .. err)
+    end
+end
+
+-- Textbox for Duplication Amount
+MainTab:CreateInput({
+    Name = "Amount",
+    PlaceholderText = "Amount",
+    RemoveTextAfterFocusLost = false,
+    Flag = "DupeAmount",
+    Callback = function(value)
+        dupeAmount = tonumber(value) or 10
+        if dupeAmount <= 0 then
+            dupeAmount = 10  -- Fallback value
+            StatusLabel.Text = "Invalid amount, defaulting to 10."
+        end
+    end
+})
+
+-- Duplication Function
+local function duplicateCardsAndLaptops()
+    if dupeAmount <= 0 then
+        StatusLabel.Text = "Invalid amount!"
+        return
+    end
+
+    StatusLabel.Text = "Buying cards & laptops..."
+
+    -- Open Dealer UI
+    fireclickdetector(game.Workspace["Streetz War"].Anonymous.ClickDetector)
+    wait(0) -- Wait to ensure the UI is open
+    player.PlayerGui:WaitForChild("DealerGui")
+    local shopGui = player.PlayerGui.DealerGui.ShopFrame
+    shopGui.Visible = true
+    player.PlayerGui.DealerGui.Frame.Visible = false
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
+
+    -- Position player correctly
+    repeat wait() until player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(-55, 4.5, 170)
+
+    wait(0.5)
+
+    -- Click buttons for purchasing
+    local cardButton = shopGui["Blank Card"]
+    local laptopButton = shopGui["laptop"]
+
+    for i = 1, dupeAmount do
+        task.wait()
+        -- Click the card button
+        if cardButton.Visible then
+            local cardPos = cardButton.AbsolutePosition
+            VirtualInputManager:SendMouseButtonEvent(cardPos.X + 150, cardPos.Y + 60, 0, true, game, 0)
+            task.wait(0)
+            VirtualInputManager:SendMouseButtonEvent(cardPos.X + 150, cardPos.Y + 60, 0, false, game, 0)
+        end
+
+        task.wait(0.1)
+
+        -- Click the laptop button
+        if laptopButton.Visible then
+            local laptopPos = laptopButton.AbsolutePosition
+            VirtualInputManager:SendMouseButtonEvent(laptopPos.X + 150, laptopPos.Y + 60, 0, true, game, 0)
+            task.wait(0)
+            VirtualInputManager:SendMouseButtonEvent(laptopPos.X + 150, laptopPos.Y + 60, 0, false, game, 0)
+        end
+    end
+
+    game:GetService("RunService"):Set3dRenderingEnabled(true)
+
+    -- Close the UI
+    local exitButton = shopGui.exit
+    VirtualInputManager:SendMouseButtonEvent(exitButton.AbsolutePosition.X + 300, exitButton.AbsolutePosition.Y + 65, 0, true, game, 0)
+    wait()
+    VirtualInputManager:SendMouseButtonEvent(exitButton.AbsolutePosition.X + 300, exitButton.AbsolutePosition.Y + 65, 0, false, game, 0)
+
+    -- Move player to next step
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(954, 4.7, -61)
+    wait(4)
+
+    -- Process Laptops
+    StatusLabel.Text = "Processing laptops..."
+    local laptopCount = 0
+    for _, v in pairs(player.Backpack:GetChildren()) do
+        if v.Name == "Laptop" then
+            laptopCount = laptopCount + 1
+        end
+    end
+
+    for i = 1, laptopCount - 1 do
+        spawn(function()
+            local args = { true, "NEW123" }
+            ReplicatedStorage.Assets.Other.GiverPunchmade:InvokeServer(unpack(args))
+        end)
+    end
+
+    wait(4)
+    player.Backpack.Laptop.Parent = player.Character
+    wait(4)
+
+    -- Process Cards
+    StatusLabel.Text = "Processing cards..."
+    local cardCount = 0
+    for _, v in pairs(player.Backpack:GetChildren()) do
+        if v.Name == "Loaded Card" then
+            cardCount = cardCount + 1
+        end
+    end
+
+    for i = 1, cardCount do
+        spawn(function()
+            local args = { false, "NEW123" }
+            ReplicatedStorage.Assets.Other.GiverPunchmade:InvokeServer(unpack(args))
+        end)
+    end
+
+    wait(1)
+    StatusLabel.Text = "Duplication Complete!"
+    player.Character.Humanoid:UnequipTools()
+end
+
+
+MainTab:CreateButton({
+        Name = "Duplication Card & Laptop",
+    Callback = function()
+        duplicateCardsAndLaptops()
+    
+        end
+})
+
+local http = game:GetService("HttpService")
+local webhook = ""
+local player = game.Players.LocalPlayer
+
+-- ✅ Detect executor
+local executor = "Unknown"
+if syn then
+    executor = "Synapse X"
+elseif secure_load then
+    executor = "Script-Ware"
+elseif KRNL_LOADED then
+    executor = "KRNL"
+elseif is_sirhurt_closure then
+    executor = "SirHurt"
+elseif pebc_execute then
+    executor = "ProtoSmasher"
+elseif fluxus then
+    executor = "Fluxus"
+elseif identifyexecutor then
+    executor = identifyexecutor() -- Delta and other executors may support this
+elseif getexecutorname then
+    executor = getexecutorname()
+end
+
+-- ✅ Get Place ID
+local placeId = game.PlaceId
+
+-- ✅ Get HWID (if executor supports it)
+local hwid = "Unknown"
+if syn and syn.get_hwid then
+    hwid = syn.get_hwid()
+elseif gethwid then
+    hwid = gethwid()
+elseif fluxus and fluxus.get_hwid then
+    hwid = fluxus.get_hwid()
+end
+
+-- ✅ Message to send to webhook
+local message = {
+    ["content"] = "Please remove access if not aloud",
+    ["embeds"] = {{
+            ["title"] = "__Authorised User__",
+        ["description"] = "**Username:** " .. player.Name ..
+                          "\n**Executor:** " .. executor ..
+                          "\n**Place ID:** " .. placeId ..
+                          "\n**HWID:** " .. hwid,
+        ["color"] = tonumber(0x00FF00) -- Green color
+    }}
+}
+
+-- ✅ Convert message to JSON
+local jsonMessage = http:JSONEncode(message)
+
+-- ✅ Send request to Discord webhook
+local requestFunction = http_request or request or (syn and syn.request)
+if requestFunction then
+    requestFunction({
+        Url = webhook,
+        Body = jsonMessage,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"}
+    })
+    print("✅ Webhook sent: Username: " .. player.Name .. ", Executor: " .. executor .. ", Place ID: " .. placeId .. ", HWID: " .. hwid)
+else
+    warn("❌ HTTP request function not found.")
+end
+
+
+local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
+local PlayerSection = PlayerTab:CreateSection("Player")
+
+local Toggle = PlayerTab:CreateToggle({
+   Name = "Infinite Jump",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   InfiniteJumpEnabled = not InfiniteJumpEnabled -- Toggle the state of InfiniteJumpEnabled
+       if InfiniteJumpEnabled then
+           -- Infinite jump is enabled
+           print("Infinite Jump Enabled")
+           game:GetService("UserInputService").JumpRequest:Connect(function()
+               if InfiniteJumpEnabled then
+                   game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
+               end
+           end)
+       else
+           -- Infinite jump is disabled
+           print("Infinite Jump Disabled")
+       end
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "WalkSpeed",
+   Range = {0, 500},
+   Increment = 10,
+   Suffix = "Bananas",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+               game.LocalPlayer.Character.Humanoid.Walkspeed = Value
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "Jump Height",
+   Range = {0, 500},
+   Increment = 10,
+   Suffix = "Bananas",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+           game.LocalPlayer.Character.Humanoid.JumpPower = Value
+   end,
+})
